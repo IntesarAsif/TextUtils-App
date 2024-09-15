@@ -6,11 +6,13 @@ export default function TextForm(props) {
         let newText = text.toUpperCase();
         setText(newText)
         props.showAlert("Converted to Uppercase!", "success")
+        document.title = "TextUtils - Upper Case Coverted"
     }
     const handleLowClick=()=>{
         let newText = text.toLowerCase();
         setText(newText)
         props.showAlert("Converted to Lowercase!", "success")
+        document.title = "TextUtils - Lower Case Coverted"
     }
     const clearText=()=>{
         let newText = "";
@@ -23,6 +25,7 @@ export default function TextForm(props) {
             .join(' ');
         setText(newText);
         props.showAlert("Text has been Capitalized!", "success")
+        document.title = "TextUtils - Capitalized Case"
     }
     const handleCopy = () => {
         var text = document.getElementById("byBox");
