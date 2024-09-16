@@ -28,9 +28,7 @@ export default function TextForm(props) {
         document.title = "TextUtils - Capitalized Case"
     }
     const handleCopy = () => {
-        var text = document.getElementById("byBox");
-        text.select();
-        navigator.clipboard.writeText("text.value");
+        navigator.clipboard.writeText(text);
         props.showAlert("Text has been Copied!", "success")
     }
     const handleExtraSpaces = () => {
@@ -43,8 +41,6 @@ export default function TextForm(props) {
     }
 
     const [text, setText] = useState('');
-    // setText="new text";     //wrong way to change the text
-    // setText("New Text");        //correct way to change the text
     return (
         <>
             <div className='container' style={{color:props.mode==='dark'?'white':'#042743'}}>
@@ -63,7 +59,7 @@ export default function TextForm(props) {
 
             <div className="container my-2" style={{color:props.mode==='dark'?'white':'#042743'}}>
                 <h2>Your Text summary</h2>
-                <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words, and {text.length} characters</p>
+                <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words, and {text.length} characters</p>
                 <p>{0.008* text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes read</p>
                 <h4>Preview</h4>
                 <p>{text.length>0?text:"Enter something above to preview it"}</p>
